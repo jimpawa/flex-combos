@@ -15,6 +15,11 @@ Two independent variables:
 - wording     — `__WORD_MODE` `"lose"` ("2 picks can lose and you still win") vs
                 `"ratio"` ("1 or more picks have to win")
 
+**NAMING (Jim, 2026-09-02):** the second wording option is called **"Win framing"** in all
+display text — never "Ratio framing". But the published folder names stay `one-rail-ratio` /
+`two-rails-ratio` and the flag stays `__WORD_MODE="ratio"`: those URLs are already shared and the
+flag is baked into the 2.6 MB bundles. Display name != folder name, deliberately.
+
 | # | URL | layout | wording |
 |---|-----|--------|---------|
 | 1 | /one-rail/  (≡ /one-rail-lose/)   | one   | lose  |
@@ -55,8 +60,14 @@ https://jimpawa.github.io/flex-combos/test-questions/ (linked from the hub)
 
 **Structure = 2x2.** Primary tabs = wording (`"2 picks can lose"` / `"1 of 3 must win"`).
 Sub-tabs = rail layout (`One Rail` / `Two Rails`). Four cells, three questions each.
-Deep-link any cell with `#<wording>-<layout>`, e.g. `#ratio-two`. Variant blocks are shown/hidden
-by body classes `w-lose|w-ratio` and `l-one|l-two`; answer key toggles with `hide-answers`.
+Deep-link any cell with `#<wording>-<layout>`, e.g. `#win-two`. Variant blocks are shown/hidden
+by body classes `w-lose|w-win` and `l-one|l-two`; answer key toggles with `hide-answers`.
+`#ratio-*` is still accepted as an alias for `#win-*` so links shared before the rename resolve.
+
+Each cell carries a compact `.proto` strip above Q1: the prototype's folder name (plus its alias
+where one exists), a one-line explanation of what that layout + wording combination puts on
+screen, and an Open button to the build. Jim asked for this per tab/sub-tab (2026-09-02) after
+the earlier verbose grey context box was removed — keep it to the compact strip, not a box.
 
 - **Q1 = the LAYOUT question** (Regular vs Flex). Stem changes per layout, options identical in
   all four cells so the layouts stay comparable.
@@ -84,7 +95,7 @@ prices, e.g. FC Salzburg 1.95 regular vs 1.35 at `Flex 1/3`.
 
 ### Exact on-screen strings, card fx-2 (FC Salzburg v Pafos FC, 3 picks)
 
-| control  | price | loss framing                          | ratio framing                |
+| control  | price | loss framing                          | win framing                  |
 |----------|-------|---------------------------------------|------------------------------|
 | No Flex  | 4.68  | (NO sentence shown at all)            | (NO sentence shown at all)   |
 | Flex 2/3 | 2.34  | "1 pick can lose and you still win."  | "2 or more picks have to win"|
@@ -92,7 +103,7 @@ prices, e.g. FC Salzburg 1.95 regular vs 1.35 at `Flex 1/3`.
 
 **Core insight behind Q3:** in loss framing the sentence's number is the COMPLEMENT of the pill's
 numerator — "2 picks can lose" sits next to `Flex 1/3`, two different numbers on one card. In
-ratio framing they match.
+win framing they match.
 
 ### Vocabulary rules for any future question writing
 - Say **picks**, never "legs" (`__PICKS=true`; the UI never says legs).
