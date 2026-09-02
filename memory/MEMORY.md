@@ -65,8 +65,11 @@ by body classes `w-lose|w-ratio` and `l-one|l-two`; answer key toggles with `hid
 - **Q3 = the WORDING question.** Identical stem/options/answer in both wording tabs; only the
   quoted sentence changes, which is what makes the cells subtractable. Trap = "2 of the 3".
 
-Jim wants this page questions-only — no strings table, no draft corrections, no mapping table,
-no rationale blocks. Only the short per-layout context line stays.
+Jim wants this page **questions-only**. Removed on his instruction: strings table, draft-wording
+corrections, mapping table, rationale blocks, and (2026-09-02) the per-layout grey context box
+including the "Prototype: one-rail · alias ..." links that lived inside it. Page is now
+header -> wording tabs -> layout sub-tabs -> Q1/Q2/Q3. Do not reintroduce explanatory blocks.
+The per-layout screen facts are recorded below for question-writing, NOT for display on the page.
 
 ### What each layout actually puts on screen (verified live)
 
