@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Flex Combos — comprehension questions per prototype</title>
+<title>Flex Combos — test questions</title>
 <style>
   :root {
-    --brand-500:#9CE800; --brand-600:#8DC63F; --brand-100:#ECFCCB; --brand-900:#3D5904;
-    --n-50:#FFFFFF; --n-100:#F2F2F3; --n-200:#E4E6E7; --n-400:#AAAEB0;
+    --brand-500:#9CE800; --brand-100:#ECFCCB; --brand-900:#3D5904;
+    --n-50:#FFFFFF; --n-200:#E4E6E7; --n-400:#AAAEB0;
     --n-500:#7A8185; --n-600:#484F52; --n-700:#2F3437; --n-800:#252A2D; --n-900:#171A1C;
-    --purple:#B576F4; --orange:#FF7A00; --red:#F86147; --teal:#4DCDE3;
+    --red:#F86147; --teal:#4DCDE3;
     --r-md:8px; --r-lg:12px; --r-xl:16px; --r-full:9999px;
     --font:'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
     --mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -19,125 +19,117 @@
     font-family:var(--font); background:var(--n-900); color:var(--n-50);
     -webkit-font-smoothing:antialiased; line-height:1.5; padding:36px 20px 80px;
   }
-  .wrap { max-width:880px; margin:0 auto; }
+  .wrap { max-width:800px; margin:0 auto; }
   a { color:var(--brand-500); }
 
-  header { margin-bottom:28px; }
+  header { margin-bottom:22px; }
   .kicker {
     font:700 10px/1 var(--font); letter-spacing:.14em; text-transform:uppercase;
     color:var(--brand-500); border:1px solid rgba(156,232,0,.4);
     border-radius:var(--r-full); padding:6px 10px; display:inline-block; margin-bottom:14px;
   }
-  h1 { font:700 28px/34px var(--font); letter-spacing:-.01em; margin-bottom:10px; }
-  .lede { font:400 15px/23px var(--font); color:var(--n-400); max-width:66ch; }
+  h1 { font:700 27px/33px var(--font); letter-spacing:-.01em; }
 
-  h2 {
-    font:700 11px/1 var(--font); letter-spacing:.1em; text-transform:uppercase;
-    color:var(--n-500); margin:34px 0 14px; padding-bottom:8px;
-    border-bottom:1px solid var(--n-700);
+  /* ── tabs ── */
+  .tabs {
+    display:flex; gap:6px; padding:5px; margin:0 0 8px;
+    background:var(--n-800); border:1px solid var(--n-700); border-radius:var(--r-full);
   }
+  .tab {
+    flex:1; border:0; cursor:pointer; background:transparent;
+    font:700 14px/1 var(--font); color:var(--n-400);
+    padding:13px 14px; border-radius:var(--r-full); text-align:center;
+    transition:background .14s, color .14s; white-space:nowrap;
+  }
+  .tab:hover { color:var(--n-50); }
+  .tab[aria-selected="true"] { background:var(--brand-500); color:var(--n-900); }
 
-  table { width:100%; border-collapse:collapse; font:400 13px/19px var(--font); }
-  .scroller { overflow-x:auto; border-radius:var(--r-lg); border:1px solid var(--n-700); }
-  th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--n-700); vertical-align:top; }
-  th { font:700 11px/1 var(--font); letter-spacing:.06em; text-transform:uppercase; color:var(--n-500); background:var(--n-800); white-space:nowrap; }
-  tr:last-child td { border-bottom:0; }
-  td code, .lede code, p code, li code {
+  .applies {
+    font:400 13px/20px var(--font); color:var(--n-500);
+    padding:0 4px 18px;
+  }
+  .applies code {
     font-family:var(--mono); font-size:12px; background:var(--n-800);
-    padding:2px 5px; border-radius:4px; color:var(--brand-100);
+    padding:2px 6px; border-radius:4px; color:var(--brand-100);
   }
-  .num { font-variant-numeric:tabular-nums; font-weight:700; color:var(--brand-500); }
 
-  .fix { background:var(--n-800); border:1px solid var(--n-700); border-left:3px solid var(--orange);
-         border-radius:var(--r-lg); padding:16px 18px; margin-bottom:12px; }
-  .fix h3 { font:700 14px/20px var(--font); margin-bottom:6px; }
-  .fix p { font:400 13px/20px var(--font); color:var(--n-400); }
-  .fix .was { color:var(--red); text-decoration:line-through; }
-  .fix .now { color:var(--brand-500); font-weight:700; }
+  .panel { display:none; }
+  .panel.on { display:block; }
 
+  /* ── question card ── */
   .q {
     background:var(--n-800); border:1px solid var(--n-700); border-radius:var(--r-xl);
     padding:20px; margin-bottom:14px;
   }
-  .q__head { display:flex; align-items:flex-start; gap:10px; margin-bottom:6px; }
+  .q__head { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
   .q__n {
     flex:none; width:26px; height:26px; border-radius:var(--r-full);
     background:var(--brand-500); color:var(--n-900);
     font:700 13px/26px var(--font); text-align:center;
   }
-  .q__label { font:700 10px/1 var(--font); letter-spacing:.1em; text-transform:uppercase; color:var(--n-500); }
-  .q__stem { font:700 16px/23px var(--font); margin:8px 0 14px; }
+  .q__label {
+    font:700 10px/1 var(--font); letter-spacing:.1em; text-transform:uppercase;
+    color:var(--n-500);
+  }
+  .shown {
+    font:400 14px/21px var(--font); color:var(--n-200);
+    background:var(--n-900); border-left:2px solid var(--brand-500);
+    border-radius:0 var(--r-md) var(--r-md) 0;
+    padding:11px 13px; margin-bottom:14px;
+  }
+  .shown b { color:var(--brand-500); }
+  .shown .pill {
+    font-family:var(--mono); font-size:12px; background:var(--n-800);
+    padding:2px 6px; border-radius:4px; color:var(--brand-100); font-weight:400;
+  }
+  .q__stem { font:700 16px/23px var(--font); margin-bottom:14px; }
+
   ol.opts { list-style:none; display:flex; flex-direction:column; gap:8px; }
   ol.opts li {
-    display:flex; gap:10px; align-items:flex-start;
+    display:flex; gap:10px; align-items:center;
     font:400 14px/21px var(--font); color:var(--n-200);
     background:var(--n-900); border:1px solid var(--n-700);
     border-radius:var(--r-md); padding:11px 13px;
   }
   ol.opts li .k { flex:none; font:700 13px/21px var(--font); color:var(--n-500); width:16px; }
+  ol.opts li .t { flex:1; }
   li.correct { border-color:var(--brand-500); background:rgba(156,232,0,.07); }
   li.correct .k { color:var(--brand-500); }
   li.correct .badge {
-    margin-left:auto; flex:none; font:700 10px/1 var(--font); letter-spacing:.08em;
-    text-transform:uppercase; color:var(--n-900); background:var(--brand-500);
-    border-radius:var(--r-full); padding:4px 8px; align-self:center;
+    flex:none; font:700 10px/1 var(--font); letter-spacing:.08em; text-transform:uppercase;
+    color:var(--n-900); background:var(--brand-500);
+    border-radius:var(--r-full); padding:4px 8px;
   }
   li.trap { border-color:rgba(248,97,71,.45); }
   li.trap .k { color:var(--red); }
   li.trap .badge {
-    margin-left:auto; flex:none; font:700 10px/1 var(--font); letter-spacing:.08em;
-    text-transform:uppercase; color:var(--red); border:1px solid rgba(248,97,71,.5);
-    border-radius:var(--r-full); padding:3px 7px; align-self:center; white-space:nowrap;
+    flex:none; font:700 10px/1 var(--font); letter-spacing:.08em; text-transform:uppercase;
+    color:var(--red); border:1px solid rgba(248,97,71,.5);
+    border-radius:var(--r-full); padding:3px 7px; white-space:nowrap;
   }
+
   body.hide-answers li.correct { border-color:var(--n-700); background:var(--n-900); }
   body.hide-answers li.correct .k { color:var(--n-500); }
   body.hide-answers li.trap { border-color:var(--n-700); }
   body.hide-answers li.trap .k { color:var(--n-500); }
-  body.hide-answers .badge, body.hide-answers .why { display:none; }
-
-  .why {
-    margin-top:13px; padding-top:12px; border-top:1px solid var(--n-700);
-    font:400 13px/20px var(--font); color:var(--n-400);
-  }
-  .why b { color:var(--n-200); }
-
-  .screenq {
-    font:400 14px/21px var(--font); color:var(--n-200);
-    background:var(--n-900); border-left:2px solid var(--brand-500);
-    border-radius:0 var(--r-md) var(--r-md) 0;
-    padding:10px 13px; margin:0 0 14px;
-  }
-  .screenq b { color:var(--brand-500); }
+  body.hide-answers .badge { display:none; }
 
   .toggle {
     display:inline-flex; align-items:center; gap:9px; cursor:pointer;
     background:var(--n-800); border:1px solid var(--n-700); border-radius:var(--r-full);
     padding:9px 15px; font:700 12px/1 var(--font); color:var(--n-200);
-    margin-top:18px; user-select:none;
+    margin-top:16px; user-select:none;
   }
   .toggle:hover { border-color:var(--brand-500); }
-  .toggle .dot {
-    width:9px; height:9px; border-radius:50%; background:var(--brand-500); flex:none;
-  }
+  .toggle .dot { width:9px; height:9px; border-radius:50%; background:var(--brand-500); flex:none; }
   body.hide-answers .toggle .dot { background:var(--n-600); }
 
-  .pair {
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:14px;
-  }
-  .cell {
-    background:var(--n-800); border:1px solid var(--n-700); border-radius:var(--r-lg); padding:16px;
-  }
-  .cell h3 { font:700 15px/21px var(--font); margin-bottom:4px; }
-  .cell .meta { font:400 12px/18px var(--font); color:var(--n-500); margin-bottom:10px; }
-  .cell ul { list-style:none; display:flex; flex-direction:column; gap:6px; }
-  .cell li { font:400 13px/19px var(--font); color:var(--n-200); padding-left:14px; position:relative; }
-  .cell li::before { content:"·"; position:absolute; left:2px; color:var(--brand-500); font-weight:700; }
-
-  footer { margin-top:36px; font:400 12px/19px var(--font); color:var(--n-600); }
-  @media (max-width:520px) {
+  footer { margin-top:30px; font:400 12px/19px var(--font); color:var(--n-600); }
+  @media (max-width:560px) {
     body { padding:22px 14px 56px; }
-    h1 { font-size:23px; line-height:29px; }
+    h1 { font-size:22px; line-height:28px; }
     .q { padding:16px; }
+    .tab { font-size:13px; padding:12px 8px; }
   }
 </style>
 </head>
@@ -145,237 +137,151 @@
 <div class="wrap">
 
 <header>
-  <span class="kicker">Flex Combos · test script</span>
-  <h1>Three comprehension questions, per prototype</h1>
-  <p class="lede">
-    Questions 1 and 2 are identical in all four cells — they are the baseline you compare across
-    prototypes. Question 3 is the one that changes, because it is the only one that tests the
-    on-screen sentence. Every quoted string and price below is taken verbatim from the live
-    builds, card <code>fx-2</code> (FC&nbsp;Salzburg v Pafos&nbsp;FC).
-  </p>
-  <label class="toggle" onclick="document.body.classList.toggle('hide-answers')">
-    <span class="dot"></span><span>Toggle answer key (hide before screen-sharing)</span>
-  </label>
+  <span class="kicker">Flex Combos · test questions</span>
+  <h1>Three questions per prototype</h1>
 </header>
 
-<h2>What the participant is actually looking at</h2>
-<div class="scroller">
-  <table>
-    <thead>
-      <tr><th>Control</th><th>Price</th><th>“2 picks can lose” builds</th><th>“1 of 3 must win” builds</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>No Flex</code></td>
-        <td class="num">4.68</td>
-        <td colspan="2" style="color:var(--n-500)">no explainer sentence is shown at all</td>
-      </tr>
-      <tr>
-        <td><code>Flex 2/3</code></td>
-        <td class="num">2.34</td>
-        <td>“<b>1 pick can lose</b> and you still win.”</td>
-        <td>“<b>2 or more picks have to win</b>”</td>
-      </tr>
-      <tr>
-        <td><code>Flex 1/3</code></td>
-        <td class="num">1.35</td>
-        <td>“<b>2 picks can lose</b> and you still win.”</td>
-        <td>“<b>1 or more picks have to win</b>”</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<p class="why" style="border:0; padding-top:12px">
-  <b>The asymmetry that matters:</b> in the loss-framed builds the number in the sentence is the
-  <em>complement</em> of the number on the pill — “2 picks can lose” sits directly beside a control
-  reading <code>Flex 1/3</code>. Two different numbers, same card. In the ratio-framed builds the
-  two numbers match (<code>Flex 2/3</code> → “2 or more”). Q3 exists to measure whether that
-  mismatch costs comprehension.
-</p>
-
-<h2>Three corrections to the draft wording</h2>
-
-<div class="fix">
-  <h3>1 · “legs” becomes “picks”</h3>
-  <p>
-    These builds run with <code>__PICKS = true</code>, so every string in the product says
-    <b>picks</b> — “2 picks can lose”, “Combo · 3 picks”. Writing
-    <span class="was">3-leg bet</span> <span class="now">3-pick combo</span> keeps the question in
-    the participant’s vocabulary instead of teaching them a second one mid-test.
-  </p>
-</div>
-<div class="fix">
-  <h3>2 · “Normal Combo” becomes “No Flex”</h3>
-  <p>
-    There is no “Normal Combo” anywhere in the UI. The control reads
-    <span class="was">Normal Combo</span> <span class="now">No Flex</span>, and the rails are
-    labelled “Popular Combos” / “Flex Combos”. Asking about a label that does not exist tests
-    recall of your internal naming, not comprehension of the design.
-  </p>
-</div>
-<div class="fix">
-  <h3>3 · Q1 is a concept check, not a reading check</h3>
-  <p>
-    In the <code>No Flex</code> state the card shows <b>no explainer sentence</b> — the line only
-    appears once a flex level is chosen. So Q1 cannot be answered by reading the screen; it
-    measures the mental model they leave with. Worth logging separately from Q2 and Q3.
-  </p>
+<div class="tabs" role="tablist">
+  <button class="tab" role="tab" aria-selected="true"  aria-controls="p-lose"  onclick="pick('lose')">“2 picks can lose”</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="p-ratio" onclick="pick('ratio')">“1 of 3 must win”</button>
 </div>
 
-<h2>Q1 · Same in all four prototypes</h2>
-<div class="q">
-  <div class="q__head"><span class="q__n">1</span><span class="q__label">Concept · No Flex vs Flex</span></div>
-  <p class="q__stem">
-    What is the main difference between placing a combo with <b>No Flex</b> and placing the same
-    combo with <b>Flex</b> turned on?
-  </p>
-  <ol class="opts">
-    <li class="correct"><span class="k">A</span><span>With No Flex every pick has to win. With Flex you can still win even if some picks lose.</span><span class="badge">Correct</span></li>
-    <li><span class="k">B</span><span>With No Flex you can change your picks after placing the bet. With Flex they are locked in.</span></li>
-    <li><span class="k">C</span><span>No Flex combines your picks into one bet. Flex splits them into separate single bets.</span></li>
-    <li><span class="k">D</span><span>Not sure — I don’t know the difference.</span></li>
-  </ol>
-  <p class="why">
-    <b>Why C is the distractor to watch:</b> it is the “system bet / splitting into singles”
-    mental model carried over from other operators. If C scores highly, the concept is landing as
-    a stake-splitting mechanic rather than a tolerance mechanic. <b>D is a real signal, not a
-    throwaway</b> — report it rather than folding it into “incorrect”.
-  </p>
-</div>
+<!-- ═══════════════════ TAB 1 · loss framing ═══════════════════ -->
+<section class="panel on" id="p-lose" role="tabpanel">
 
-<h2>Q2 · Same in all four prototypes</h2>
-<div class="q">
-  <div class="q__head"><span class="q__n">2</span><span class="q__label">Payout · the cost of flexing</span></div>
-  <p class="screenq">
-    Shown with the card in view: <b>No Flex 4.68</b> · <b>Flex 2/3 2.34</b> · <b>Flex 1/3 1.35</b>
+  <p class="applies">
+    Use in <a href="../one-rail/"><code>one-rail</code></a> ·
+    <a href="../one-rail-lose/"><code>one-rail-lose</code></a> ·
+    <a href="../two-rails/"><code>two-rails</code></a> ·
+    <a href="../two-rails-lose/"><code>two-rails-lose</code></a>
   </p>
-  <p class="q__stem">
-    You switch this combo from <b>No Flex</b> to <b>Flex 2/3</b>. <b>All three of your picks then
-    win.</b> What happens to your payout compared with leaving it on No Flex?
-  </p>
-  <ol class="opts">
-    <li class="correct"><span class="k">A</span><span>It is lower — I get paid at the Flex price even though every pick won.</span><span class="badge">Correct</span></li>
-    <li class="trap"><span class="k">B</span><span>It is higher, because Flex is an extra feature I added.</span><span class="badge">Key trap</span></li>
-    <li><span class="k">C</span><span>It stays exactly the same whether or not I flex.</span></li>
-    <li><span class="k">D</span><span>Not sure how flexing changes the payout.</span></li>
-  </ol>
-  <p class="why">
-    <b>This is the commercially dangerous one.</b> A participant picking B believes flexing is a
-    free upgrade and will feel cheated at settlement. Keep the three real prices on screen —
-    the question is whether they can read the trade-off <em>with the numbers in front of them</em>,
-    which is the softest possible version of the test. Failing it here is a hard fail.
-  </p>
-</div>
 
-<h2>Q3 · Version A — for the “2 picks can lose” builds</h2>
-<p class="screenq" style="border-left-color:var(--purple)">
-  Use in <a href="../one-rail/">one-rail</a> (and its alias <a href="../one-rail-lose/">one-rail-lose</a>)
-  and <a href="../two-rails/">two-rails</a> (alias <a href="../two-rails-lose/">two-rails-lose</a>).
-</p>
-<div class="q">
-  <div class="q__head"><span class="q__n">3</span><span class="q__label">Wording · loss framing</span></div>
-  <p class="screenq">
-    A 3-pick combo shows <b>Flex 1/3</b> on the control, and underneath:
-    <b>“2 picks can lose and you still win.”</b>
-  </p>
-  <p class="q__stem">How many of the 3 picks have to win for this bet to pay out?</p>
-  <ol class="opts">
-    <li class="correct"><span class="k">A</span><span>1 of the 3</span><span class="badge">Correct</span></li>
-    <li class="trap"><span class="k">B</span><span>2 of the 3</span><span class="badge">Key trap</span></li>
-    <li><span class="k">C</span><span>All 3</span></li>
-    <li><span class="k">D</span><span>Not sure — the two numbers on the card don’t seem to agree.</span></li>
-  </ol>
-  <p class="why">
-    <b>B is the whole reason this question exists.</b> The card shows a <code>2</code> in the
-    sentence and a <code>1</code> on the pill, so a participant who reads the sentence’s number as
-    “must win” lands on B. Every B here is a direct cost of loss framing, and it is the number to
-    hold against Version&nbsp;B below. Option D is worded to give people permission to report the
-    conflict rather than guess — treat a high D as the same finding as a high B.
-  </p>
-</div>
-
-<h2>Q3 · Version B — for the “1 of 3 must win” builds</h2>
-<p class="screenq" style="border-left-color:var(--teal)">
-  Use in <a href="../one-rail-ratio/">one-rail-ratio</a> and <a href="../two-rails-ratio/">two-rails-ratio</a>.
-</p>
-<div class="q">
-  <div class="q__head"><span class="q__n">3</span><span class="q__label">Wording · ratio framing</span></div>
-  <p class="screenq">
-    A 3-pick combo shows <b>Flex 1/3</b> on the control, and underneath:
-    <b>“1 or more picks have to win”</b>
-  </p>
-  <p class="q__stem">How many of the 3 picks have to win for this bet to pay out?</p>
-  <ol class="opts">
-    <li class="correct"><span class="k">A</span><span>1 of the 3</span><span class="badge">Correct</span></li>
-    <li class="trap"><span class="k">B</span><span>2 of the 3</span><span class="badge">Compare vs A</span></li>
-    <li><span class="k">C</span><span>All 3</span></li>
-    <li><span class="k">D</span><span>Not sure — the two numbers on the card don’t seem to agree.</span></li>
-  </ol>
-  <p class="why">
-    <b>Deliberately the same stem, options and correct answer as Version A</b> — only the quoted
-    sentence changes. That is what makes the two cells subtractable: any gap in the A-score is
-    attributable to wording alone. Expect this version to score higher, because the sentence’s
-    <code>1</code> matches the pill’s <code>1</code>. If it does <em>not</em> score higher, the
-    problem is the <code>x/y</code> pill itself, not the sentence — a much bigger finding.
-  </p>
-</div>
-
-<h2>Which set goes where</h2>
-<div class="scroller">
-  <table>
-    <thead>
-      <tr><th>Prototype</th><th>Layout</th><th>Wording</th><th>Q1</th><th>Q2</th><th>Q3</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><a href="../one-rail/">one-rail</a> <span style="color:var(--n-600)">≡ one-rail-lose</span></td>
-          <td>One rail</td><td>Loss</td><td>Shared</td><td>Shared</td><td><b>Version A</b></td></tr>
-      <tr><td><a href="../one-rail-ratio/">one-rail-ratio</a></td>
-          <td>One rail</td><td>Ratio</td><td>Shared</td><td>Shared</td><td><b>Version B</b></td></tr>
-      <tr><td><a href="../two-rails/">two-rails</a> <span style="color:var(--n-600)">≡ two-rails-lose</span></td>
-          <td>Two rails</td><td>Loss</td><td>Shared</td><td>Shared</td><td><b>Version A</b></td></tr>
-      <tr><td><a href="../two-rails-ratio/">two-rails-ratio</a></td>
-          <td>Two rails</td><td>Ratio</td><td>Shared</td><td>Shared</td><td><b>Version B</b></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<h2>One caveat on the layout variable</h2>
-<div class="pair">
-  <div class="cell">
-    <h3>Three questions can’t separate one rail from two</h3>
-    <p class="meta">Why the table above repeats Q3 within each wording pair</p>
-    <ul>
-      <li>Rail layout does not change a single word on the card — <code>one-rail</code> and
-        <code>two-rails</code> show identical sentences and identical prices.</li>
-      <li>So any comprehension difference between them would be noise, not signal.</li>
-      <li>What the layout actually changes is <b>whether people find the flexable stock at all</b>:
-        one rail mixes 5 cards, two rails surfaces a dedicated “Flex Combos” rail of 10.</li>
-      <li>Measure that behaviourally — time to first Flex interaction, scroll depth before it,
-        share of sessions that never touch the control.</li>
-    </ul>
+  <div class="q">
+    <div class="q__head"><span class="q__n">1</span><span class="q__label">No Flex vs Flex</span></div>
+    <p class="q__stem">
+      What is the main difference between placing a combo with <b>No Flex</b> and placing the same
+      combo with <b>Flex</b> turned on?
+    </p>
+    <ol class="opts">
+      <li class="correct"><span class="k">A</span><span class="t">With No Flex every pick has to win. With Flex you can still win even if some picks lose.</span><span class="badge">Correct</span></li>
+      <li><span class="k">B</span><span class="t">With No Flex you can change your picks after placing the bet. With Flex they are locked in.</span></li>
+      <li><span class="k">C</span><span class="t">No Flex combines your picks into one bet. Flex splits them into separate single bets.</span></li>
+      <li><span class="k">D</span><span class="t">Not sure — I don’t know the difference.</span></li>
+    </ol>
   </div>
-  <div class="cell">
-    <h3>If you want a fourth question for the two-rails cells</h3>
-    <p class="meta">Optional · findability, not comprehension</p>
-    <ul>
-      <li><b>Stem:</b> “On this homepage, where would you go to find a combo where not all your
-        picks have to win?”</li>
-      <li>A — The “Flex Combos” row <span style="color:var(--brand-500)">(correct in two-rails)</span></li>
-      <li>B — The “Popular Combos” row</li>
-      <li>C — The Football section lower down</li>
-      <li>D — I wouldn’t know where to look</li>
-      <li>Asked in <em>all four</em> cells it becomes the cleanest measure of the layout variable —
-        in the one-rail cells the honest correct answer is B, which is itself worth knowing.</li>
-    </ul>
+
+  <div class="q">
+    <div class="q__head"><span class="q__n">2</span><span class="q__label">Payout</span></div>
+    <p class="shown">
+      On screen: <span class="pill">No Flex</span> <b>4.68</b> &nbsp;·&nbsp;
+      <span class="pill">Flex 2/3</span> <b>2.34</b> &nbsp;·&nbsp;
+      <span class="pill">Flex 1/3</span> <b>1.35</b>
+    </p>
+    <p class="q__stem">
+      You switch this combo from <b>No Flex</b> to <b>Flex 2/3</b>. <b>All three of your picks then
+      win.</b> What happens to your payout compared with leaving it on No Flex?
+    </p>
+    <ol class="opts">
+      <li class="correct"><span class="k">A</span><span class="t">It is lower — I get paid at the Flex price even though every pick won.</span><span class="badge">Correct</span></li>
+      <li class="trap"><span class="k">B</span><span class="t">It is higher, because Flex is an extra feature I added.</span><span class="badge">Key trap</span></li>
+      <li><span class="k">C</span><span class="t">It stays exactly the same whether or not I flex.</span></li>
+      <li><span class="k">D</span><span class="t">Not sure how flexing changes the payout.</span></li>
+    </ol>
   </div>
+
+  <div class="q">
+    <div class="q__head"><span class="q__n">3</span><span class="q__label">Wording</span></div>
+    <p class="shown">
+      On screen: a 3-pick combo showing <span class="pill">Flex 1/3</span> and, underneath,
+      <b>“2 picks can lose and you still win.”</b>
+    </p>
+    <p class="q__stem">How many of the 3 picks have to win for this bet to pay out?</p>
+    <ol class="opts">
+      <li class="correct"><span class="k">A</span><span class="t">1 of the 3</span><span class="badge">Correct</span></li>
+      <li class="trap"><span class="k">B</span><span class="t">2 of the 3</span><span class="badge">Key trap</span></li>
+      <li><span class="k">C</span><span class="t">All 3</span></li>
+      <li><span class="k">D</span><span class="t">Not sure — the two numbers on the card don’t seem to agree.</span></li>
+    </ol>
+  </div>
+
+</section>
+
+<!-- ═══════════════════ TAB 2 · ratio framing ═══════════════════ -->
+<section class="panel" id="p-ratio" role="tabpanel">
+
+  <p class="applies">
+    Use in <a href="../one-rail-ratio/"><code>one-rail-ratio</code></a> ·
+    <a href="../two-rails-ratio/"><code>two-rails-ratio</code></a>
+  </p>
+
+  <div class="q">
+    <div class="q__head"><span class="q__n">1</span><span class="q__label">No Flex vs Flex</span></div>
+    <p class="q__stem">
+      What is the main difference between placing a combo with <b>No Flex</b> and placing the same
+      combo with <b>Flex</b> turned on?
+    </p>
+    <ol class="opts">
+      <li class="correct"><span class="k">A</span><span class="t">With No Flex every pick has to win. With Flex you can still win even if some picks lose.</span><span class="badge">Correct</span></li>
+      <li><span class="k">B</span><span class="t">With No Flex you can change your picks after placing the bet. With Flex they are locked in.</span></li>
+      <li><span class="k">C</span><span class="t">No Flex combines your picks into one bet. Flex splits them into separate single bets.</span></li>
+      <li><span class="k">D</span><span class="t">Not sure — I don’t know the difference.</span></li>
+    </ol>
+  </div>
+
+  <div class="q">
+    <div class="q__head"><span class="q__n">2</span><span class="q__label">Payout</span></div>
+    <p class="shown">
+      On screen: <span class="pill">No Flex</span> <b>4.68</b> &nbsp;·&nbsp;
+      <span class="pill">Flex 2/3</span> <b>2.34</b> &nbsp;·&nbsp;
+      <span class="pill">Flex 1/3</span> <b>1.35</b>
+    </p>
+    <p class="q__stem">
+      You switch this combo from <b>No Flex</b> to <b>Flex 2/3</b>. <b>All three of your picks then
+      win.</b> What happens to your payout compared with leaving it on No Flex?
+    </p>
+    <ol class="opts">
+      <li class="correct"><span class="k">A</span><span class="t">It is lower — I get paid at the Flex price even though every pick won.</span><span class="badge">Correct</span></li>
+      <li class="trap"><span class="k">B</span><span class="t">It is higher, because Flex is an extra feature I added.</span><span class="badge">Key trap</span></li>
+      <li><span class="k">C</span><span class="t">It stays exactly the same whether or not I flex.</span></li>
+      <li><span class="k">D</span><span class="t">Not sure how flexing changes the payout.</span></li>
+    </ol>
+  </div>
+
+  <div class="q">
+    <div class="q__head"><span class="q__n">3</span><span class="q__label">Wording</span></div>
+    <p class="shown">
+      On screen: a 3-pick combo showing <span class="pill">Flex 1/3</span> and, underneath,
+      <b>“1 or more picks have to win”</b>
+    </p>
+    <p class="q__stem">How many of the 3 picks have to win for this bet to pay out?</p>
+    <ol class="opts">
+      <li class="correct"><span class="k">A</span><span class="t">1 of the 3</span><span class="badge">Correct</span></li>
+      <li class="trap"><span class="k">B</span><span class="t">2 of the 3</span><span class="badge">Compare vs tab 1</span></li>
+      <li><span class="k">C</span><span class="t">All 3</span></li>
+      <li><span class="k">D</span><span class="t">Not sure — the two numbers on the card don’t seem to agree.</span></li>
+    </ol>
+  </div>
+
+</section>
+
+<label class="toggle" onclick="document.body.classList.toggle('hide-answers')">
+  <span class="dot"></span><span>Toggle answer key</span>
+</label>
+
+<footer><a href="../">Back to the prototype hub</a></footer>
+
 </div>
 
-<footer>
-  Strings and prices captured from the live builds on 2 Sep 2026, card <code>fx-2</code>, viewport
-  402×874. Shared flags: <code>__FLEX_V2</code>, <code>__FLEX_UI="pset"</code>,
-  <code>__PICKS=true</code>. · <a href="../">Back to the prototype hub</a>
-</footer>
-
-</div>
+<script>
+  function pick(which) {
+    document.getElementById('p-lose').classList.toggle('on', which === 'lose');
+    document.getElementById('p-ratio').classList.toggle('on', which === 'ratio');
+    document.querySelectorAll('.tab').forEach(function (t) {
+      t.setAttribute('aria-selected', t.getAttribute('aria-controls') === 'p-' + which);
+    });
+    if (history.replaceState) history.replaceState(null, '', '#' + which);
+  }
+  if (location.hash === '#ratio') pick('ratio');
+</script>
 </body>
 </html>
