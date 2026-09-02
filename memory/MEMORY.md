@@ -49,6 +49,42 @@ All six: 140 sprite symbols, icons painting, 6/6 game images HTTP 200 (`naturalW
 inside the image-slot shadow root — a `.gtile img` selector cannot see them), 0 unexpected 404s.
 The `.image-slots.state.json` 404 is expected and harmless.
 
+## Test script — /test-questions/
+
+https://jimpawa.github.io/flex-combos/test-questions/ (linked from the hub)
+
+Q1 (No Flex vs Flex concept) and Q2 (payout cost of flexing) are IDENTICAL in all four cells —
+they are the cross-prototype baseline. Q3 splits by wording with an identical stem, options and
+correct answer, so the loss vs ratio cells subtract cleanly:
+
+- Version A (loss framing) -> one-rail, one-rail-lose, two-rails, two-rails-lose
+- Version B (ratio framing) -> one-rail-ratio, two-rails-ratio
+
+Page has an answer-key toggle (`body.hide-answers`) for screen-sharing.
+
+### Exact on-screen strings, card fx-2 (FC Salzburg v Pafos FC, 3 picks)
+
+| control  | price | loss framing                          | ratio framing                |
+|----------|-------|---------------------------------------|------------------------------|
+| No Flex  | 4.68  | (NO sentence shown at all)            | (NO sentence shown at all)   |
+| Flex 2/3 | 2.34  | "1 pick can lose and you still win."  | "2 or more picks have to win"|
+| Flex 1/3 | 1.35  | "2 picks can lose and you still win." | "1 or more picks have to win"|
+
+**The core insight:** in loss framing the sentence's number is the COMPLEMENT of the pill's
+numerator — "2 picks can lose" sits next to `Flex 1/3`. Two different numbers on one card. In
+ratio framing they match. Q3's trap answer ("2 of the 3") measures exactly that cost.
+
+### Three corrections made to Jim's draft questions
+1. "legs" -> "picks" (`__PICKS=true`; the UI never says legs)
+2. "Normal Combo" -> "No Flex" (no such label exists in the UI)
+3. Q1 reframed as a concept check — the No Flex state shows no sentence to read
+
+### Caveat recorded on the page
+Three questions cannot separate one-rail from two-rails: rail layout changes no wording at all,
+so Q3 repeats within each wording pair. Layout is a FINDABILITY variable — measure behaviourally
+(time to first Flex interaction, scroll depth, % sessions never touching the control). An
+optional 4th findability question is drafted on the page.
+
 ## Related
 
 `flex-combos-one-rail` is a lighter source-level rebuild of variant #1 (separate editable files
