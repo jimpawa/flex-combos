@@ -64,10 +64,19 @@ Deep-link any cell with `#<wording>-<layout>`, e.g. `#win-two`. Variant blocks a
 by body classes `w-lose|w-win` and `l-one|l-two`; answer key toggles with `hide-answers`.
 `#ratio-*` is still accepted as an alias for `#win-*` so links shared before the rename resolve.
 
-Each cell carries a compact `.proto` strip above Q1: the prototype's folder name (plus its alias
-where one exists), a one-line explanation of what that layout + wording combination puts on
-screen, and an Open button to the build. Jim asked for this per tab/sub-tab (2026-09-02) after
-the earlier verbose grey context box was removed — keep it to the compact strip, not a box.
+Each cell carries a `.proto` strip above Q1 — **the whole strip is one `<a>`**, since Jim asked
+(2026-09-02) that it be obvious this is the link to the build. It shows a teal
+"Prototype to test — tap to open" kicker, the folder name + alias, the printed URL, the
+per-cell explanation, and an "Open prototype ↗" button (a `<span>`, not a nested `<a>`).
+Opens in a new tab. Keep it to this strip — not the verbose grey box that was removed earlier.
+
+**Two CSS traps in that strip, both already hit once:**
+1. Do NOT put `display` on `a.proto`. `a.proto` is (0,1,1) and outranks `.v { display:none }`
+   at (0,1,0), which made all four cells' strips render at once. `display:flex` must come only
+   from the `body.l-*.w-*` combo rules at (0,3,1).
+2. Its parts are `<span>`s (they live inside an anchor, so they cannot be `<div>`s) and each
+   structural one needs `display:block`, or name / alias / URL / description collapse into a
+   single inline wrapped line.
 
 - **Q1 = the LAYOUT question** (Regular vs Flex). Stem changes per layout, options identical in
   all four cells so the layouts stay comparable.
