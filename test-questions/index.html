@@ -298,10 +298,17 @@
   function setW(w) { W = w; apply(); }
   function setL(l) { L = l; apply(); }
 
-  var h = (location.hash || '').replace('#', '').split('-');
-  if (h[0] === 'lose' || h[0] === 'ratio') W = h[0];
-  if (h[1] === 'one'  || h[1] === 'two')   L = h[1];
-  apply();
+  // Read #<wording>-<layout> from the URL. Also runs on hashchange, so editing the
+  // hash or following a deep-link into an already-open tab switches the cell instead
+  // of silently doing nothing (hash-only navigation never reloads the document).
+  function fromHash() {
+    var h = (location.hash || '').replace('#', '').split('-');
+    if (h[0] === 'lose' || h[0] === 'ratio') W = h[0];
+    if (h[1] === 'one'  || h[1] === 'two')   L = h[1];
+    apply();
+  }
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
 </script>
 </body>
 </html>
