@@ -53,14 +53,17 @@ The `.image-slots.state.json` 404 is expected and harmless.
 
 https://jimpawa.github.io/flex-combos/test-questions/ (linked from the hub)
 
-Q1 (No Flex vs Flex concept) and Q2 (payout cost of flexing) are IDENTICAL in all four cells —
-they are the cross-prototype baseline. Q3 splits by wording with an identical stem, options and
-correct answer, so the loss vs ratio cells subtract cleanly:
+**Structure = two tabs, one per wording option**, each holding the same three questions:
+`"2 picks can lose"` (→ one-rail, one-rail-lose, two-rails, two-rails-lose) and
+`"1 of 3 must win"` (→ one-rail-ratio, two-rails-ratio). Deep-link the second tab with
+`#ratio`. Answer key toggles via `body.hide-answers`.
 
-- Version A (loss framing) -> one-rail, one-rail-lose, two-rails, two-rails-lose
-- Version B (ratio framing) -> one-rail-ratio, two-rails-ratio
+Q1 (No Flex vs Flex) and Q2 (payout) are identical in both tabs — they are the cross-prototype
+baseline. Q3 keeps an identical stem, options and correct answer in both tabs; only the quoted
+sentence changes, which is what makes the two cells subtractable.
 
-Page has an answer-key toggle (`body.hide-answers`) for screen-sharing.
+Jim asked (2026-09-02) to strip everything else: no strings table, no draft-wording corrections,
+no set-mapping table, no layout caveat, no per-question rationale. Keep it questions-only.
 
 ### Exact on-screen strings, card fx-2 (FC Salzburg v Pafos FC, 3 picks)
 
@@ -70,20 +73,19 @@ Page has an answer-key toggle (`body.hide-answers`) for screen-sharing.
 | Flex 2/3 | 2.34  | "1 pick can lose and you still win."  | "2 or more picks have to win"|
 | Flex 1/3 | 1.35  | "2 picks can lose and you still win." | "1 or more picks have to win"|
 
-**The core insight:** in loss framing the sentence's number is the COMPLEMENT of the pill's
-numerator — "2 picks can lose" sits next to `Flex 1/3`. Two different numbers on one card. In
+**Core insight behind Q3:** in loss framing the sentence's number is the COMPLEMENT of the pill's
+numerator — "2 picks can lose" sits next to `Flex 1/3`, two different numbers on one card. In
 ratio framing they match. Q3's trap answer ("2 of the 3") measures exactly that cost.
 
-### Three corrections made to Jim's draft questions
-1. "legs" -> "picks" (`__PICKS=true`; the UI never says legs)
-2. "Normal Combo" -> "No Flex" (no such label exists in the UI)
-3. Q1 reframed as a concept check — the No Flex state shows no sentence to read
+### Vocabulary rules for any future question writing
+- Say **picks**, never "legs" (`__PICKS=true`; the UI never says legs).
+- Say **No Flex**, never "Normal Combo" (no such label exists in the UI).
+- The No Flex state shows NO explainer sentence, so Q1 is a concept check, not a reading check.
 
-### Caveat recorded on the page
-Three questions cannot separate one-rail from two-rails: rail layout changes no wording at all,
-so Q3 repeats within each wording pair. Layout is a FINDABILITY variable — measure behaviourally
-(time to first Flex interaction, scroll depth, % sessions never touching the control). An
-optional 4th findability question is drafted on the page.
+### Known limit
+Three questions cannot separate one-rail from two-rails — rail layout changes no wording, so Q3
+repeats within each wording pair. Layout is a FINDABILITY variable: measure behaviourally (time
+to first Flex interaction, scroll depth, % sessions never touching the control).
 
 ## Related
 
