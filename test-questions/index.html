@@ -75,11 +75,17 @@
     font:700 10px/1 var(--font); letter-spacing:.1em; text-transform:uppercase; color:var(--n-500);
   }
   .shown {
-    font:400 14px/21px var(--font); color:var(--n-200);
+    font:400 15px/23px var(--font); color:var(--n-200);
     background:var(--n-900); border-left:2px solid var(--brand-500);
-    border-radius:0 var(--r-md) var(--r-md) 0; padding:11px 13px; margin-bottom:14px;
+    border-radius:0 var(--r-md) var(--r-md) 0; padding:13px 15px; margin-bottom:14px;
   }
   .shown b { color:var(--brand-500); }
+  /* the lead-in label — bold and a step larger than the line it introduces.
+     Needs its own class: a plain <b> would inherit the lime colour above. */
+  .shown__lbl {
+    font:700 17px/24px var(--font); color:var(--n-50);
+    letter-spacing:-.01em; margin-right:3px;
+  }
   .shown .pill {
     font-family:var(--mono); font-size:12px; background:var(--n-800);
     padding:2px 6px; border-radius:4px; color:var(--brand-100); font-weight:400;
@@ -249,7 +255,7 @@
 
   <div class="v v-one">
     <p class="shown">
-      On screen: the <b>Popular Combos</b> row. Some cards have a <b>Flex</b> button next to the
+      <span class="shown__lbl">On screen:</span> the <b>Popular Combos</b> row. Some cards have a <b>Flex</b> button next to the
       price; others show only a price.
     </p>
     <p class="q__stem">
@@ -258,7 +264,7 @@
   </div>
   <div class="v v-two">
     <p class="shown">
-      On screen: two rows — <b>Popular Combos</b> and <b>Flex Combos</b>. The same match appears in
+      <span class="shown__lbl">On screen:</span> two rows — <b>Popular Combos</b> and <b>Flex Combos</b>. The same match appears in
       both, at a different price.
     </p>
     <p class="q__stem">
@@ -279,7 +285,7 @@
 <div class="q">
   <div class="q__head"><span class="q__n">2</span><span class="q__label">Payout</span></div>
   <p class="shown">
-    On screen: this card arrives set to <span class="pill">Flex 1/3</span> at <b>1.35</b>. Tap the
+    <span class="shown__lbl">On screen:</span> this card arrives set to <span class="pill">Flex 1/3</span> at <b>1.35</b>. Tap the
     Flex button and you also see <span class="pill">No Flex</span> <b>4.68</b> and
     <span class="pill">Flex 2/3</span> <b>2.34</b>.
   </p>
@@ -300,11 +306,11 @@
   <div class="q__head"><span class="q__n">3</span><span class="q__label">Wording</span></div>
 
   <p class="shown v v-lose">
-    On screen: a 3-pick combo. Its button reads <span class="pill">Flex 1/3</span>, and the line
+    <span class="shown__lbl">On screen:</span> a 3-pick combo. Its button reads <span class="pill">Flex 1/3</span>, and the line
     just above the button says <b>“2 picks can lose and you still win.”</b>
   </p>
   <p class="shown v v-win">
-    On screen: a 3-pick combo. Its button reads <span class="pill">Flex 1/3</span>, and the line
+    <span class="shown__lbl">On screen:</span> a 3-pick combo. Its button reads <span class="pill">Flex 1/3</span>, and the line
     just above the button says <b>“1 or more picks have to win”</b>.
   </p>
 
