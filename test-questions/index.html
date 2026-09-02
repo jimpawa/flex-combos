@@ -60,20 +60,6 @@
   }
   .subtab[aria-selected="true"] span { color:var(--n-400); }
 
-  /* ── context line ── */
-  .ctx {
-    font:400 13px/20px var(--font); color:var(--n-400);
-    background:var(--n-800); border:1px solid var(--n-700);
-    border-radius:var(--r-lg); padding:13px 15px; margin-bottom:18px;
-  }
-  .ctx b { color:var(--n-200); }
-  .ctx code, .applies code, .shown .pill {
-    font-family:var(--mono); font-size:12px; background:var(--n-900);
-    padding:2px 6px; border-radius:4px; color:var(--brand-100); font-weight:400;
-  }
-  .applies { font:400 13px/20px var(--font); color:var(--n-500); margin-top:10px; }
-  .applies code { background:var(--n-900); }
-
   /* ── question card ── */
   .q {
     background:var(--n-800); border:1px solid var(--n-700); border-radius:var(--r-xl);
@@ -94,6 +80,10 @@
     border-radius:0 var(--r-md) var(--r-md) 0; padding:11px 13px; margin-bottom:14px;
   }
   .shown b { color:var(--brand-500); }
+  .shown .pill {
+    font-family:var(--mono); font-size:12px; background:var(--n-800);
+    padding:2px 6px; border-radius:4px; color:var(--brand-100); font-weight:400;
+  }
   .q__stem { font:700 16px/23px var(--font); margin-bottom:14px; }
 
   ol.opts { list-style:none; display:flex; flex-direction:column; gap:8px; }
@@ -130,10 +120,6 @@
   body.l-two  .v-two   { display:block; }
   body.w-lose  .v-lose  { display:block; }
   body.w-ratio .v-ratio { display:block; }
-  body.l-one.w-lose   .v-one-lose   { display:block; }
-  body.l-two.w-lose   .v-two-lose   { display:block; }
-  body.l-one.w-ratio  .v-one-ratio  { display:block; }
-  body.l-two.w-ratio  .v-two-ratio  { display:block; }
 
   .toggle {
     display:inline-flex; align-items:center; gap:9px; cursor:pointer;
@@ -177,24 +163,6 @@
   <button class="subtab" role="tab" data-l="two" aria-selected="false" onclick="setL('two')">
     Two Rails<span>Regular and Flex in separate rows</span>
   </button>
-</div>
-
-<!-- what this prototype puts on screen -->
-<div class="ctx v v-one">
-  <b>One rail.</b> Regular and Flex combos are mixed inside a single <b>Popular Combos</b> row.
-  Cards 1, 3 and 5 are flexed (they carry a <code>Flex 1/3</code> or <code>Flex 2/3</code> control
-  and an explainer line); cards 2 and 4 are regular and show only a price. Nothing labels the two
-  kinds — the participant has to spot the difference themselves.
-  <p class="applies v v-one-lose">Prototype: <a href="../one-rail/"><code>one-rail</code></a> · alias <a href="../one-rail-lose/"><code>one-rail-lose</code></a></p>
-  <p class="applies v v-one-ratio">Prototype: <a href="../one-rail-ratio/"><code>one-rail-ratio</code></a></p>
-</div>
-<div class="ctx v v-two">
-  <b>Two rails.</b> Two separate rows: <b>Popular Combos</b> holds five regular cards (price only),
-  and <b>Flex Combos</b> — marked with a shield icon — holds five flexed cards. The same fixtures
-  appear in both rows at different prices, e.g. FC&nbsp;Salzburg is <b>1.95</b> as a regular combo
-  and <b>1.35</b> at <code>Flex 1/3</code>. The split does the explaining.
-  <p class="applies v v-two-lose">Prototype: <a href="../two-rails/"><code>two-rails</code></a> · alias <a href="../two-rails-lose/"><code>two-rails-lose</code></a></p>
-  <p class="applies v v-two-ratio">Prototype: <a href="../two-rails-ratio/"><code>two-rails-ratio</code></a></p>
 </div>
 
 <!-- ══════════ Q1 · layout ══════════ -->
