@@ -114,12 +114,41 @@
   body.hide-answers li.trap .k { color:var(--n-500); }
   body.hide-answers .badge { display:none; }
 
+  /* ── per-cell prototype strip ── */
+  .proto {
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    background:var(--n-800); border:1px solid var(--n-700);
+    border-left:3px solid var(--teal);
+    border-radius:var(--r-lg); padding:13px 16px; margin-bottom:18px;
+  }
+  .proto__tx { flex:1 1 260px; min-width:0; }
+  .proto__nm { font:700 13px/19px var(--font); color:var(--n-50); }
+  .proto__nm code {
+    font-family:var(--mono); font-size:12px; background:var(--n-900);
+    padding:2px 6px; border-radius:4px; color:var(--teal); font-weight:400;
+  }
+  .proto__nm .alias { color:var(--n-500); font-weight:400; }
+  .proto__nm .alias code { color:var(--n-500); }
+  .proto__ex { font:400 12px/18px var(--font); color:var(--n-400); margin-top:5px; }
+  .proto__ex q { color:var(--n-200); font-style:normal; }
+  .proto__go {
+    flex:none; text-decoration:none;
+    font:700 11px/1 var(--font); letter-spacing:.07em; text-transform:uppercase;
+    color:var(--n-900); background:var(--teal);
+    border-radius:var(--r-full); padding:9px 14px;
+  }
+  .proto__go:hover { filter:brightness(1.08); }
+
   /* ── variant switching ── */
   .v { display:none; }
   body.l-one  .v-one   { display:block; }
   body.l-two  .v-two   { display:block; }
   body.w-lose  .v-lose  { display:block; }
-  body.w-ratio .v-ratio { display:block; }
+  body.w-win   .v-win   { display:block; }
+  body.l-one.w-lose .v-one-lose { display:flex; }
+  body.l-two.w-lose .v-two-lose { display:flex; }
+  body.l-one.w-win  .v-one-win  { display:flex; }
+  body.l-two.w-win  .v-two-win  { display:flex; }
 
   .toggle {
     display:inline-flex; align-items:center; gap:9px; cursor:pointer;
@@ -152,7 +181,7 @@
 <!-- wording -->
 <div class="tabs" role="tablist" aria-label="Wording">
   <button class="tab" role="tab" data-w="lose"  aria-selected="true"  onclick="setW('lose')">“2 picks can lose”</button>
-  <button class="tab" role="tab" data-w="ratio" aria-selected="false" onclick="setW('ratio')">“1 of 3 must win”</button>
+  <button class="tab" role="tab" data-w="win" aria-selected="false" onclick="setW('win')">“1 of 3 must win”</button>
 </div>
 
 <!-- layout -->
@@ -163,6 +192,55 @@
   <button class="subtab" role="tab" data-l="two" aria-selected="false" onclick="setL('two')">
     Two Rails<span>Regular and Flex in separate rows</span>
   </button>
+</div>
+
+<!-- ══════════ the prototype this cell tests ══════════ -->
+<div class="proto v v-one-lose">
+  <div class="proto__tx">
+    <div class="proto__nm"><code>one-rail</code> <span class="alias">· alias <code>one-rail-lose</code></span></div>
+    <div class="proto__ex">
+      Regular and Flex combos share a single <b>Popular Combos</b> row — cards 1, 3 and 5 are
+      flexed, 2 and 4 are regular, and nothing labels which is which. Explainer line reads
+      <q>2 picks can lose and you still win.</q>
+    </div>
+  </div>
+  <a class="proto__go" href="../one-rail/" target="_blank" rel="noopener">Open</a>
+</div>
+
+<div class="proto v v-two-lose">
+  <div class="proto__tx">
+    <div class="proto__nm"><code>two-rails</code> <span class="alias">· alias <code>two-rails-lose</code></span></div>
+    <div class="proto__ex">
+      <b>Popular Combos</b> and <b>Flex Combos</b> are separate rows of five, and the same fixture
+      appears in both at a different price. Explainer line reads
+      <q>2 picks can lose and you still win.</q>
+    </div>
+  </div>
+  <a class="proto__go" href="../two-rails/" target="_blank" rel="noopener">Open</a>
+</div>
+
+<div class="proto v v-one-win">
+  <div class="proto__tx">
+    <div class="proto__nm"><code>one-rail-ratio</code></div>
+    <div class="proto__ex">
+      Regular and Flex combos share a single <b>Popular Combos</b> row — cards 1, 3 and 5 are
+      flexed, 2 and 4 are regular, and nothing labels which is which. Explainer line reads
+      <q>1 or more picks have to win</q>.
+    </div>
+  </div>
+  <a class="proto__go" href="../one-rail-ratio/" target="_blank" rel="noopener">Open</a>
+</div>
+
+<div class="proto v v-two-win">
+  <div class="proto__tx">
+    <div class="proto__nm"><code>two-rails-ratio</code></div>
+    <div class="proto__ex">
+      <b>Popular Combos</b> and <b>Flex Combos</b> are separate rows of five, and the same fixture
+      appears in both at a different price. Explainer line reads
+      <q>1 or more picks have to win</q>.
+    </div>
+  </div>
+  <a class="proto__go" href="../two-rails-ratio/" target="_blank" rel="noopener">Open</a>
 </div>
 
 <!-- ══════════ Q1 · layout ══════════ -->
@@ -225,7 +303,7 @@
     On screen: a 3-pick combo showing <span class="pill">Flex 1/3</span> and, underneath,
     <b>“2 picks can lose and you still win.”</b>
   </p>
-  <p class="shown v v-ratio">
+  <p class="shown v v-win">
     On screen: a 3-pick combo showing <span class="pill">Flex 1/3</span> and, underneath,
     <b>“1 or more picks have to win”</b>
   </p>
@@ -252,7 +330,7 @@
   function apply() {
     var b = document.body;
     b.classList.toggle('w-lose',  W === 'lose');
-    b.classList.toggle('w-ratio', W === 'ratio');
+    b.classList.toggle('w-win',  W === 'win');
     b.classList.toggle('l-one',   L === 'one');
     b.classList.toggle('l-two',   L === 'two');
     document.querySelectorAll('.tab').forEach(function (t) {
@@ -271,8 +349,11 @@
   // of silently doing nothing (hash-only navigation never reloads the document).
   function fromHash() {
     var h = (location.hash || '').replace('#', '').split('-');
-    if (h[0] === 'lose' || h[0] === 'ratio') W = h[0];
-    if (h[1] === 'one'  || h[1] === 'two')   L = h[1];
+    // 'ratio' is the old name for the win-framing cell — still accepted so links
+    // shared before the rename keep resolving.
+    if (h[0] === 'win' || h[0] === 'ratio') W = 'win';
+    else if (h[0] === 'lose') W = 'lose';
+    if (h[1] === 'one' || h[1] === 'two') L = h[1];
     apply();
   }
   window.addEventListener('hashchange', fromHash);

@@ -8,9 +8,9 @@ hosted as live links.
 | # | Prototype | Rail layout | Wording | URL |
 |---|-----------|-------------|---------|-----|
 | 1 | One rail · loss framing  | `__COMBO_LAYOUT="one"`   | `__WORD_MODE="lose"`  | [/one-rail/](https://jimpawa.github.io/flex-combos/one-rail/) · alias [/one-rail-lose/](https://jimpawa.github.io/flex-combos/one-rail-lose/) |
-| 2 | One rail · ratio framing | `__COMBO_LAYOUT="one"`   | `__WORD_MODE="ratio"` | [/one-rail-ratio/](https://jimpawa.github.io/flex-combos/one-rail-ratio/) |
+| 2 | One rail · win framing | `__COMBO_LAYOUT="one"`   | `__WORD_MODE="ratio"` | [/one-rail-ratio/](https://jimpawa.github.io/flex-combos/one-rail-ratio/) |
 | 3 | Two rails · loss framing | `__COMBO_LAYOUT="rails"` | `__WORD_MODE="lose"`  | [/two-rails/](https://jimpawa.github.io/flex-combos/two-rails/) · alias [/two-rails-lose/](https://jimpawa.github.io/flex-combos/two-rails-lose/) |
-| 4 | Two rails · ratio framing| `__COMBO_LAYOUT="rails"` | `__WORD_MODE="ratio"` | [/two-rails-ratio/](https://jimpawa.github.io/flex-combos/two-rails-ratio/) |
+| 4 | Two rails · win framing| `__COMBO_LAYOUT="rails"` | `__WORD_MODE="ratio"` | [/two-rails-ratio/](https://jimpawa.github.io/flex-combos/two-rails-ratio/) |
 
 ## Six folders, four prototypes
 
@@ -25,7 +25,7 @@ all six share resource fingerprint `1c6b4d61b415`.
 ## Shared across all builds
 
     __FLEX_V2   = true      3-leg model, flex levels 2/3 and 1/3
-    __FLEX_UI   = "pset"    preset control — level reads as a plain ratio
+    __FLEX_UI   = "pset"    preset control — level reads as a plain fraction
     __FLEX_LOCK = "user"    pinned to the User Flex prototype
     __FLEX_DATA = true      real priced ladder from flex_bet_pricing_5match.xlsx
     __JIM_RAILS = true      Jim's Ideas rail treatment

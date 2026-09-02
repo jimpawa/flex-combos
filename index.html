@@ -94,18 +94,6 @@
     background:var(--n-900); padding:2px 5px; border-radius:4px; color:var(--n-200);
   }
 
-  .note {
-    margin-top:36px; background:var(--n-800); border:1px solid var(--n-700);
-    border-left:3px solid var(--orange-500);
-    border-radius:var(--r-lg); padding:16px 18px;
-  }
-  .note h3 { font:700 13px/1 var(--font); margin-bottom:8px; color:var(--n-50); }
-  .note p { font:400 13px/20px var(--font); color:var(--n-400); }
-  .note p + p { margin-top:8px; }
-  .note code {
-    font-family:ui-monospace, SFMono-Regular, Menlo, monospace; font-size:12px;
-    background:var(--n-900); padding:2px 5px; border-radius:4px; color:var(--n-200);
-  }
   footer {
     margin-top:32px; font:400 12px/18px var(--font); color:var(--n-600);
   }
@@ -150,7 +138,7 @@
       <h3>Variable 2 · how the rule is worded</h3>
       <p>
         <b>Loss framing</b> — “2 picks can lose and you still win.”<br><br>
-        <b>Ratio framing</b> — “1 of 3 must win”, anchoring the sentence on the same number as the
+        <b>Win framing</b> — “1 of 3 must win”, anchoring the sentence on the same number as the
         control label (Flex&nbsp;1/3).
       </p>
     </div>
@@ -171,7 +159,7 @@
       </div>
       <p class="quote">“2 picks can lose and you still win.”</p>
       <p class="card__desc">
-        Single Popular Combos carousel. Cards ship pre-flexed; the level reads as a plain ratio.
+        Single Popular Combos carousel. Cards ship pre-flexed; the level reads as a plain fraction.
       </p>
       <span class="card__go">Open →</span>
       <p class="alias">
@@ -182,18 +170,18 @@
 
     <a class="card" href="one-rail-ratio/">
       <div class="card__top">
-        <h3>One rail · ratio framing</h3>
+        <h3>One rail · win framing</h3>
         <span class="card__n">2</span>
       </div>
       <div class="chips">
         <span class="chip chip--rail">One rail</span>
-        <span class="chip chip--word">Ratio framing</span>
+        <span class="chip chip--word">Win framing</span>
         <span class="chip">Flex 2/3 · 1/3</span>
       </div>
       <p class="quote">“1 of 3 must win”</p>
       <p class="card__desc">
-        Same single rail as #1, but the condition is phrased as a ratio rather than as a loss you
-        can absorb.
+        Same single rail as #1, but the condition is phrased as what must win rather than as a loss
+        you can absorb.
       </p>
       <span class="card__go">Open →</span>
     </a>
@@ -222,17 +210,17 @@
 
     <a class="card" href="two-rails-ratio/">
       <div class="card__top">
-        <h3>Two rails · ratio framing</h3>
+        <h3>Two rails · win framing</h3>
         <span class="card__n">4</span>
       </div>
       <div class="chips">
         <span class="chip chip--rail">Two rails</span>
-        <span class="chip chip--word">Ratio framing</span>
+        <span class="chip chip--word">Win framing</span>
         <span class="chip">Flex 2/3 · 1/3</span>
       </div>
       <p class="quote">“1 of 3 must win”</p>
       <p class="card__desc">
-        Same split rails as #3, with the ratio phrasing. The four-way comparison against #1–#3.
+        Same split rails as #3, with the win phrasing. The four-way comparison against #1–#3.
       </p>
       <span class="card__go">Open →</span>
     </a>
@@ -253,28 +241,15 @@
         <span class="chip">answer key</span>
       </div>
       <p class="card__desc">
-        Two tabs, one per wording option — “2 picks can lose” and “1 of 3 must win” —
-        each with the same three questions. Every string and price quoted verbatim from
-        the live builds.
+        Wording tabs crossed with One&nbsp;Rail / Two&nbsp;Rails sub-tabs — the four
+        prototypes, three questions each. Every string and price quoted verbatim from the
+        live builds.
       </p>
       <span class="card__go" style="color:#4DCDE3">Open the test script &rarr;</span>
     </a>
   </div>
 
-  <div class="note">
-    <h3>Two of the six folders are duplicates</h3>
-    <p>
-      <code>one-rail</code> and <code>one-rail-lose</code> are the same build — same flags, same
-      code, differing only in <code>&lt;title&gt;</code>. <code>two-rails</code> and
-      <code>two-rails-lose</code> likewise. All six URLs are live so existing links keep working,
-      but there are only four prototypes to review.
-    </p>
-    <p>
-      Every build is a self-contained ~2.6&nbsp;MB page with React, Babel, all four Roboto faces
-      and the 140-symbol pawaIconZ sprite inlined. Nothing is fetched from a CDN, so they work
-      offline and in Maze. First paint takes a second while Babel compiles the JSX.
-    </p>
-  </div>
+
 
   <footer>
     Published from Claude Design project <code>7a99d38c</code> · shared flags:
