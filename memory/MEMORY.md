@@ -129,6 +129,34 @@ status pill hidden. **Only the pre-boot shell was edited — the resource manife
 script are untouched.** A future re-publish from Claude Design will overwrite this; re-apply.
 To see it, load with JS disabled — locally it boots too fast to observe.
 
+### ANCHOR CARD for Q2 and Q3: `fx-8` (PSV v Fortuna Sittard)
+
+Verified identical in all four builds — arrives at `Flex 2/3` @ **1.48**, picks PSV / Over 3.5 /
+Perisic 2+, and its **only other dropdown option is `No Flex` @ 4.82**. `Flex 1/3` is NOT offered
+on this card: it would price under the 1.20 floor (`levels` filter in ui.jsx). Only the sentence
+differs by wording ("1 pick can lose and you still win." vs "2 or more picks have to win").
+
+**`Flex 2/3` is the dominant default** — 2 of 3 flexed cards in one rail, 4 of 5 in two rails.
+`fx-2` (FC Salzburg, `Flex 1/3` @ 1.35, three-level ladder 4.68 / 2.34 / 1.35) is the EXCEPTION.
+Do not write a stem promising three options unless it is specifically about fx-2.
+
+### Alignment with Jim's original draft questions
+
+Q3 uses **2/3 Flex** with his original option order (A all 3 / B at least 2 / C only 1),
+correct = B, trap = C. Q2 uses his **lower / higher / same** options, correct = A, trap = B —
+asking for a specific price instead had lost the "stays the same" mental model.
+
+Two deliberate deviations from his draft, both still open for him to overrule:
+1. **"Normal Combo" -> "No Flex"** / "a card without the Flex button". The UI has no "Normal
+   Combo" label anywhere; the control says No Flex and the rails say Popular / Flex Combos.
+   If a moderator introduces the term "Normal Combo" in the brief, his wording becomes fine.
+2. **Q1 option B is inverted** from his draft. He had Normal = can change picks; the page has
+   Flex = can change picks, because "Flex" sounding like "editable" is the more tempting
+   misconception. It is a distractor either way.
+
+Also shortened every D to a plain "Not sure." per his "simple and straight" instruction; his
+fuller "Not sure / I don't know the difference between X and Y" is available if preferred.
+
 ### Vocabulary rules for any future question writing
 - Say **picks**, never "legs" (`__PICKS=true`; the UI never says legs).
 - Say **No Flex**, never "Normal Combo" (no such label exists in the UI).
