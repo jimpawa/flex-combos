@@ -105,6 +105,30 @@ prices, e.g. FC Salzburg 1.95 regular vs 1.35 at `Flex 1/3`.
 numerator — "2 picks can lose" sits next to `Flex 1/3`, two different numbers on one card. In
 win framing they match.
 
+### Question-accuracy audit (2026-09-02) — verified with DOM geometry, not by eye
+
+Card anatomy, measured: the **explainer sentence sits ABOVE the Flex button** (top 861 vs 899px),
+and the **Flex button sits LEFT of the price on the same row** (both top 899; left 26 vs 127).
+Cards **arrive already flexed** at `Flex 1/3` / **1.35** — they never start on No Flex, and
+4.68 / 2.34 only appear once the button is tapped. The first flexed card is `fx-2`
+FC Salzburg v Pafos FC in BOTH layouts, so Q2 and Q3 can be identical across all four cells and
+still be true to the default screen.
+
+Five errors fixed: "underneath" -> above; "above the price" -> next to the price; dropped the
+"Flex 2/3" reference from Q1 (first card reads 1/3); Q2 rewritten to the arrival state and
+answered in prices only (1.35 correct, 4.68 the trap); Q3 option D was "the two numbers don't
+agree" which is only true in the loss cell — now a neutral "Not sure." everywhere, and a high B
+in the loss cell is the mismatch signal.
+
+### Preloader (2026-09-02)
+
+All six builds shipped a white `#faf9f5` full-screen placeholder with a crude "2/3" card sketch
+and an "Unpacking..." pill. Replaced with the **betPawa wordmark on `#16191B`, pulsing**
+(`#__pawa_preload`, opacity 1 -> 0.28, 1.15s infinite, disabled under prefers-reduced-motion);
+status pill hidden. **Only the pre-boot shell was edited — the resource manifest and loader
+script are untouched.** A future re-publish from Claude Design will overwrite this; re-apply.
+To see it, load with JS disabled — locally it boots too fast to observe.
+
 ### Vocabulary rules for any future question writing
 - Say **picks**, never "legs" (`__PICKS=true`; the UI never says legs).
 - Say **No Flex**, never "Normal Combo" (no such label exists in the UI).
