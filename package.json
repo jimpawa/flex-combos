@@ -1,0 +1,24 @@
+{
+  "name": "flex-combos",
+  "version": "1.0.0",
+  "description": "The six published builds from Claude Design project `7a99d38c-bfa5-4d85-badf-f16fdabeb1ca`, hosted as live links.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimpawa/flex-combos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jimpawa/flex-combos/issues"
+  },
+  "homepage": "https://github.com/jimpawa/flex-combos#readme",
+  "dependencies": {
+    "playwright-core": "^1.62.1"
+  }
+}
