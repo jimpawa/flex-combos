@@ -121,8 +121,11 @@
   body.hide-answers .badge { display:none; }
 
   /* ── per-cell prototype link · the whole strip is the link ── */
+  /* No `display` here on purpose: `a.proto` (0,1,1) would outrank
+     `.v { display:none }` (0,1,0) and every cell's strip would show at once.
+     The body.l-*.w-* rules below supply `display:flex` for the active cell. */
   a.proto {
-    display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+    align-items:center; gap:16px; flex-wrap:wrap;
     background:var(--n-800); border:1px solid var(--teal);
     border-left:4px solid var(--teal);
     border-radius:var(--r-lg); padding:14px 16px; margin-bottom:18px;
